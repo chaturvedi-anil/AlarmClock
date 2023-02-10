@@ -40,6 +40,19 @@ function updateClock()
     seconds.innerHTML = second;
     period.innerHTML = ampm;
 
+    // if any alarm is present in upcomping alarm list the this function will call  
+    if(alarmListArr.length>0)
+    {
+        ringAlarm(hour, minute, second, ampm);
+    }
+}
+
+setInterval("updateClock()",1000);
+
+
+// Ring alarm function
+function ringAlarm(hour, minute, second, ampm)
+{
     for(let i=0; i<alarmListArr.length;i++)
     {
         if(alarmListArr[i]==`${hour}:${minute}:${second} ${ampm}`)
@@ -51,10 +64,6 @@ function updateClock()
         }
     }
 }
-
-setInterval("updateClock()",1000);
-
-
 
 // Set alarm section
 
